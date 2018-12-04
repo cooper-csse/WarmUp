@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class MapImplementationReview {
 		
 		// A HashMap is a good all-purpose map, since it is fast: O(1) search,
 		// insertion, and deletion in many situations.
-		Map<String, Integer> ages = new HashMap<>();
+		Map<String, Integer> ages = new TreeMap<>();
 		// Fill the map.
 		ages.put("Bob", 17);
 		ages.put("Shelley", 21);
