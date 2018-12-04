@@ -12,13 +12,16 @@ public class Search {
 		//
 		// You can look up binary search algorithm from the CSSE220 materials
 		// or here: https://en.wikipedia.org/wiki/Binary_search_algorithm#Procedure
-		
-		for (int i = 0; i < sortedArray.length; i++) {
-			if (searchTerm == sortedArray[i]) {
-				return i;
-			}
+
+		int index = Math.floorDiv(sortedArray.length-1, 2);
+		for (int i = 0; i <= Math.ceil(Math.log(sortedArray.length) / Math.log(2)); i++) {
+			if (sortedArray[index] == searchTerm)
+				return index;
+			int direction = sortedArray[index] < searchTerm ? 1 : -1;
+			index += direction * Math.ceil(sortedArray.length / Math.pow(2, (i + 2)));
+			if (index < 0)
+				return -1;
 		}
-		// Not found
 		return -1;
 	}
 }
