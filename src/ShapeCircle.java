@@ -6,7 +6,7 @@
  * @author Matt Boutell.
  *         Created Dec 1, 2013.
  */
-public class ShapeCircle {
+public class ShapeCircle implements Comparable<ShapeCircle> {
 	// TODO: Make this Circle comparable to other Circles so it can be sorted. That is,
 	// implement the Comparable<Circle> interface.
 	
@@ -47,5 +47,9 @@ public class ShapeCircle {
 		ShapeCircle other = (ShapeCircle)obj;
 		return this.radius == other.radius;
 	}
-	
+
+	@Override
+	public int compareTo(ShapeCircle o) {
+		return (int) Math.signum(this.radius - o.radius);
+	}
 }
