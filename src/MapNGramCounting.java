@@ -1,5 +1,6 @@
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -24,9 +25,16 @@ public class MapNGramCounting {
 	 * @return
 	 */
 	static Map<String,Integer> nGramCounter(String text, int n) {
-		//TODO: write this method!
-		
-		return null;
+		Map<String, Integer> map = new HashMap();
+		for (int index = 0; index + n <= text.length(); index++) {
+			String key = text.substring(index, index + n);
+			if (map.containsKey(key)) {
+				map.put(key, map.get(key) + 1);
+			} else {
+				map.put(key, 1);
+			}
+		}
+		return map;
 	}
 
 }
