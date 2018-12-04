@@ -1,11 +1,19 @@
-
+import java.util.Comparator;
 
 /**
  * An implement of triangles with area and perimeter.
  * 
  * @author boutell. Created Dec 1, 2013.
  */
-public class ShapeTriangle {
+public class ShapeTriangle implements Comparable<ShapeTriangle> {
+
+	static Comparator<ShapeTriangle> areaComparator = new Comparator<ShapeTriangle>() {
+		@Override
+		public int compare(ShapeTriangle a, ShapeTriangle b) {
+			return (int) Math.signum(a.area() - b.area());
+		}
+	};
+
 	private double a, b, c; // 3 sides
 
 	/**
@@ -27,8 +35,8 @@ public class ShapeTriangle {
 	 * @return The area of this triangle.
 	 */
 	public double area() {
-		// TODO: Implement this. Hint: lookup and use Heron's formula. 
-		return -17.0;
+		double perimeter = (this.a + this.b + this.c) / 2.0;
+		return Math.sqrt(perimeter * (perimeter - this.a) * (perimeter - this.b) * (perimeter - this.c));
 	}
 
 	/**
@@ -54,6 +62,9 @@ public class ShapeTriangle {
 		return this.a == other.a && this.b == other.b && this.c == other.c;
 	}
 
-	
+	@Override
+	public int compareTo(ShapeTriangle o) {
+		return (int) Math.signum(this.area() - o.area());
+	}
 
 }
