@@ -21,7 +21,13 @@ public class Anagram {
 	 * @return true iff s1 is an anagram of s2
 	 */
 	public static boolean isAnagram(String s1, String s2) {
-		// TODO: implement this method
-		return false;
+		String string1 = s1.toLowerCase();
+		String string2 = s2.toLowerCase();
+		if (string1.length() == string2.length()) {
+			for (int i = 0; i < string1.length(); i++) {
+				string2 = string2.replaceFirst(String.valueOf(string1.charAt(i)), "");
+			}
+		}
+		return string2.length() == 0;
 	}
 }
