@@ -39,16 +39,21 @@ public class SortedLinkedList<T extends Comparable<T>> extends
 	 */
 	@Override
 	public void add(T element) {
-		// TODO: implement this method
+		Node item = this.head;
+		while (item.next.data != null) {
+			if (item.next.data.compareTo(element) > 0) break;
+			item = item.next;
+		}
+		item.addAfter(element);
 	}
 
 	@Override
 	public void addFirst(T element) {
-		// TODO: throw UnsupportedOperationException exception
+		throw new UnsupportedOperationException("Cannot prepend item to sorted list.");
 	}
 
 	@Override
 	public void addLast(T element) {
-		// TODO: throw UnsupportedOperationException exception
+		throw new UnsupportedOperationException("Cannot append item to sorted list.");
 	}
 }
